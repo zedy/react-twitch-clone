@@ -14,6 +14,7 @@ const SignInReducer = (state = INITIAL_STATE, action) => {
         case 'SIGN_OUT':
             return {
                 ...state,
+                userId: null,
                 signedIn: false
             }
         default:

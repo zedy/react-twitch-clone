@@ -21,26 +21,37 @@ const GoogleAuth = ({ signIn, signOut, isSignedIn }) => {
     }
 
     useEffect(() => {
+        console.log('1');
         window.gapi.load('client:auth2', () => {
+            console.log('2');
             const googleConfig = {
                 scope: 'email',
                 client_id: process.env.REACT_APP_OAUTH_CLIENT_ID
             }
             
             window.gapi.client.init(googleConfig).then(() => {
+                console.log('3');
                 const googleAuth = window.gapi.auth2.getAuthInstance();
-                const status = googleAuth.isSignedIn.get();
-                setAuth(googleAuth);
-                onAuthChange(status, googleAuth.currentUser.get().getId());
-                googleAuth.isSignedIn.listen(onAuthChange);
+
+                // setAuth(googleAuth);
+                // setAuth(state => {
+                //     console.log(auth);
+                //     signinChanged(state.isSignedIn.get());
+                //     state.isSignedIn.listen(signinChanged);
+
+                //     return state;
+                // });
+   
+                signinChanged(googleAuth.isSignedIn.get(), googleAuth.currentUser.get().getId());
+                googleAuth.isSignedIn.listen(signinChanged);
             }).catch(error => {
                 console.log(error);
             })
         });
     }, []);
 
-    const onAuthChange = (status, id) => {
-        if (status) {
+    const signinChanged = (isSignedIn, id) => {
+        if (isSignedIn) {
             signIn(id);
         } else {
             signOut();

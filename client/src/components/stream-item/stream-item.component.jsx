@@ -4,16 +4,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { selectUserId } from '../../redux/auth/auth.selectors';
-import Button from '../buttons/button.component';
 
-const StreamItem = ({ stream: {title, id, userId, description}, currentUserId }) => {
+const StreamItem = ({ stream: {title, id, userId, description}, currentUserId, onClick }) => {
   
   const renderButtons = streamUserId => {
     if (currentUserId !== 'undefined' && currentUserId === streamUserId) {
       return (
         <div className="right floated content">
           <Link to={`/streams/edit/${id}`} className="ui button primary">Edit</Link>
-          <Button className="ui button primary negative">Delete</Button>
+          <button onClick={() => {onClick(title, id)}} className="ui button primary negative">Delete</button>
         </div>
       )
     }
@@ -21,7 +20,9 @@ const StreamItem = ({ stream: {title, id, userId, description}, currentUserId })
 
   return (
     <div className="item">
-      {renderButtons(userId)}
+      {
+        renderButtons(userId)
+      }
       <i className="large middle aligned icon camera"></i>
       <div className="content">
         {title}

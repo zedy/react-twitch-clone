@@ -18,7 +18,9 @@ const StreamEdit = ({ match, userId, history }) => {
     }, [])
 
     const onSubmit = async formValues => {
-        const response = await editStreamUtil(stream.id, formValues, userId);
+        const response = await editStreamUtil(stream.id, formValues);
+
+        {/* TODO: integrate toastr and refactor response */}
 
         if (response.status !== 200) {
             alert('something wrong');

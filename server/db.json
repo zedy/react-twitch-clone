@@ -11,22 +11,10 @@
       "id": 2
     },
     {
-      "title": "Lorem ipsum",
-      "description": "This is some placeholder text",
-      "id": 3,
-      "userId": "113836217479595464441"
-    },
-    {
       "title": "Test refactor stream",
       "description": "This was done after refactoring the streamCreate",
       "userId": "113836217479595464441",
       "id": 4
-    },
-    {
-      "title": "a1234",
-      "description": "abcd",
-      "userId": "113836217479595464441",
-      "id": 5
     }
   ]
 }

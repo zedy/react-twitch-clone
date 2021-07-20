@@ -16,8 +16,8 @@ export const deleteStreamUtil = id => {
   return streams.delete(`/streams/${id}`);
 }
 
-export const editStreamUtil = (id, formValues, userId) => {
-  return streams.put(`/streams/${id}`, { ...formValues, userId});
+export const editStreamUtil = (id, formValues) => {
+  return streams.patch(`/streams/${id}`, { ...formValues});
 }
 
 export const mapNewStreamsList = streams => {

@@ -1,51 +1,32 @@
 {
   "streams": [
     {
-      "title": "123",
-      "description": "abc",
+      "title": "Stream 123",
+      "description": "This is some placeholder text",
       "id": 1
     },
     {
-      "title": "abc",
-      "description": "123",
+      "title": "Stream Test",
+      "description": "This is some placeholder text",
       "id": 2
     },
     {
-      "title": "test",
-      "description": "afghhjjj",
-      "id": 3
+      "title": "Lorem ipsum",
+      "description": "This is some placeholder text",
+      "id": 3,
+      "userId": "113836217479595464441"
     },
     {
-      "title": "bbbbbbbbbbbbb",
-      "description": "aaaaaaaaaaaaa",
+      "title": "Test refactor stream",
+      "description": "This was done after refactoring the streamCreate",
+      "userId": "113836217479595464441",
       "id": 4
     },
     {
-      "title": "3333333",
-      "description": "444444444",
+      "title": "a1234",
+      "description": "abcd",
+      "userId": "113836217479595464441",
       "id": 5
-    },
-    {
-      "title": "zzzzz",
-      "description": "vvvvvv",
-      "id": 6
-    },
-    {
-      "title": "qqqqqq",
-      "description": "eeeeeee",
-      "id": 7
-    },
-    {
-      "title": "test",
-      "description": "aaaaaaaaaaaaaaaa",
-      "userId": "113836217479595464441",
-      "id": 8
-    },
-    {
-      "title": "qwe",
-      "description": "r",
-      "userId": "113836217479595464441",
-      "id": 9
     }
   ]
 }

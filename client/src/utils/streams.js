@@ -1,7 +1,7 @@
 import streams from "../apis/streams";
 
 export const createStreamUtil = (userId, formValues) => {
-  return streams.post('/streams', { ...formValues, userId});
+  return streams.post('/streams', );
 }
 
 export const fetchStreamsUtil = () => {
@@ -16,8 +16,8 @@ export const deleteStreamUtil = id => {
   return streams.delete(`/streams/${id}`);
 }
 
-export const editStreamUtil = (id, formValues) => {
-  return streams.put(`/streams/${id}`, formValues);
+export const editStreamUtil = (id, formValues, userId) => {
+  return streams.put(`/streams/${id}`, { ...formValues, userId});
 }
 
 export const mapNewStreamsList = streams => {

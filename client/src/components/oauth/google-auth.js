@@ -10,8 +10,6 @@ import GoogleButton from '../buttons/google-button.component';
 import { SignIn, SignOut } from '../../redux/signin/signin.actions';
 
 const GoogleAuth = ({ signIn, signOut, isSignedIn }) => {
-    const [auth, setAuth] = useState(null);
-
     const authStatus = () => {
         if (isSignedIn === null) {
             return null;
@@ -20,39 +18,41 @@ const GoogleAuth = ({ signIn, signOut, isSignedIn }) => {
         return <GoogleButton onClick={updateStatus} status={isSignedIn} />
     }
 
+    {/* TODO: refactor component using lib react-google-login */}
+
     useEffect(() => {
-        console.log('1');
         window.gapi.load('client:auth2', () => {
-            console.log('2');
             const googleConfig = {
                 scope: 'email',
                 client_id: process.env.REACT_APP_OAUTH_CLIENT_ID
             }
             
             window.gapi.client.init(googleConfig).then(() => {
-                console.log('3');
                 const googleAuth = window.gapi.auth2.getAuthInstance();
 
-                // setAuth(googleAuth);
+                //setAuth(googleAuth);
+
+                window.z = googleAuth;
+
                 // setAuth(state => {
-                //     console.log(auth);
+                //     console.log(state);
                 //     signinChanged(state.isSignedIn.get());
                 //     state.isSignedIn.listen(signinChanged);
 
                 //     return state;
                 // });
    
-                signinChanged(googleAuth.isSignedIn.get(), googleAuth.currentUser.get().getId());
-                googleAuth.isSignedIn.listen(signinChanged);
+                signinChanged(window.z.isSignedIn.get(), window.z.currentUser.get().getId());
+                window.z.isSignedIn.listen(signinChanged);
             }).catch(error => {
                 console.log(error);
             })
         });
     }, []);
 
-    const signinChanged = (isSignedIn, id) => {
+    const signinChanged = (isSignedIn, id = null) => {
         if (isSignedIn) {
-            signIn(id);
+            signIn(id ? id : window.z.currentUser.get().getId());
         } else {
             signOut();
         }
@@ -60,14 +60,16 @@ const GoogleAuth = ({ signIn, signOut, isSignedIn }) => {
 
     const updateStatus = () => {
         if (!isSignedIn) {
-            auth.signIn();
+            window.z.signIn();
         } else {
-            auth.signOut();
+            window.z.signOut();
         }
     }
 
     return (
-        <div>{ authStatus() }</div>
+        <div>
+            { authStatus() }
+        </div>
     )
 };
 

@@ -6,7 +6,7 @@ import StreamForm from './stream-form.component';
 import { editStreamUtil } from '../../utils/streams';
 import { selectUserId } from '../../redux/auth/auth.selectors';
 
-const StreamEdit = ({ match, userId, history }) => {
+const StreamEdit = ({ match, history }) => {
     const [stream, setStream] = useState(null);
 
     useEffect(() => {

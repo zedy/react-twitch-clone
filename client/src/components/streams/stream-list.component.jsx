@@ -20,7 +20,7 @@ const StreamList = ({ allStreams, putStreamsInState, currentUserId }) => {
         (async () => {
             const data = await fetchStreamsUtil();
             putStreamsInState(data);
-        })();      
+        })();
     }, [putStreamsInState, currentUserId])
 
     const renderList = streams => {

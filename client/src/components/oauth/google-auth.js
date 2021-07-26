@@ -1,6 +1,6 @@
 // libs
 import React from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 // components
@@ -18,7 +18,7 @@ const GoogleAuth = ({ signIn, signOut, isSignedIn }) => {
         return <GoogleButton onClick={updateStatus} status={isSignedIn} />
     }
 
-    {/* TODO: refactor component using lib react-google-login */}
+    //* TODO: refactor component using lib react-google-login
 
     useEffect(() => {
         window.gapi.load('client:auth2', () => {

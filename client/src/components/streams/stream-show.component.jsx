@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { fetchStreamUtil } from '../../utils/streams';
 
-const StreamShow = () => {
+const StreamShow = ({ match }) => {
+    const [stream, setStream] = useState(null);
+
+    useEffect(() => {
+        (async () => {
+            const response = await fetchStreamUtil(match.params.id);
+
+            setStream(response.data);
+        })();      
+    }, [])
+
+    if (!stream) {
+        return <div>Loading ...</div>
+    }
+
     return (
-        <div>Stream show</div>
+        <div>{ stream.title }</div>
     )
 };
 

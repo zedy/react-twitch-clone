@@ -25,7 +25,7 @@ const StreamItem = ({ stream: {title, id, userId, description}, currentUserId, o
       }
       <i className="large middle aligned icon camera"></i>
       <div className="content">
-        {title}
+        <Link to={`/streams/${id}`}>{title}</Link>
         <div className="description">
           {description}
         </div>
